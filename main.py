@@ -289,7 +289,7 @@ def main():
     """
     # Configure page settings
     st.set_page_config(
-        page_title="ChatBot Arena",
+        page_title="VAM ChatBot Arena",
         page_icon="🤖",
         layout="wide"
     )
