@@ -295,10 +295,17 @@ def show_faq_tab() -> None:
     receive anonymous responses, and vote for the best one.
     
     ### What tech stack is used?
-    - Streamlit for the frontend
-    - Python for the backend
-    - SQLAlchemy and Supabase/PostgreSQL for the database
-    - ChatGPT, Claude, and DeepSeek for the language models
+    - Frontend
+        - Streamlit
+        - Plotly for data visualization
+    - Backend
+        - SQLAlchemy for ORM
+        - PostgreSQL (via Supabase): Main database
+        - Python (Pandas, logging, typing) for data processing and error handling
+    - AI Language Models
+        - ChatGPT 4o via OpenAI API
+        - Claude 3.5 Sonnet via Anthropic API
+        - DeepSeek v3 via DeepSeek API
 
     ### How does the voting system work?
     1. Enter your prompt in the chat interface
@@ -327,7 +334,7 @@ def show_faq_tab() -> None:
     ### Can I see previous prompts and winners?
     Yes! Check out the Analytics tab to see recent activity and voting patterns.
     
-    ### What should I avoid?
+    ### What should I avoid asking?
     - Avoid inserting personal information or sensitive data.
 
     
