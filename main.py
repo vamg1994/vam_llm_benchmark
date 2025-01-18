@@ -282,6 +282,57 @@ def show_analytics_tab() -> None:
         logger.error(f"Error in analytics dashboard: {e}")
         st.error("An error occurred while loading the analytics dashboard. Please try again later.")
 
+def show_faq_tab() -> None:
+    """
+    Display frequently asked questions about the AI model comparison platform.
+    """
+    st.markdown("""
+    ## Frequently Asked Questions❓
+    
+    ### What is VAM mini-LLM Arena?
+    VAM mini-LLM Arena is a platform that allows users to compare responses from different AI language models 
+    (ChatGPT 4.0, Claude 3.5 Sonnet, and DeepSeek v3) in a blind test format. Users can submit prompts, 
+    receive anonymous responses, and vote for the best one.
+    
+    ### What tech stack is used?
+    - Streamlit for the frontend
+    - Python for the backend
+    - SQLAlchemy and Supabase/PostgreSQL for the database
+    - ChatGPT, Claude, and DeepSeek for the language models
+
+    ### How does the voting system work?
+    1. Enter your prompt in the chat interface
+    2. Receive anonymized responses from all three models
+    3. Vote for the response you think is best
+    4. The winning model gets a point on the leaderboard
+
+    ### Are the responses really anonymous?
+    Yes! The responses are randomly shuffled before being displayed. Neither users nor the platform 
+    administrators know which model generated which response until after a vote is cast.
+
+    ### What types of prompts work best?
+    You can try various types of prompts:
+    - Questions requiring factual knowledge
+    - Creative writing tasks
+    - Problem-solving scenarios
+    - Code generation and debugging
+    - Analysis and explanations
+
+    ### How is the data used?
+    The prompts, responses, and voting data are stored securely and used to:
+    - Calculate model performance statistics
+    - Generate analytics and insights
+    - The questions and the winner are stored in the database for future analysis.
+
+    ### Can I see previous prompts and winners?
+    Yes! Check out the Analytics tab to see recent activity and voting patterns.
+    
+    ### What should I avoid?
+    - Avoid inserting personal information or sensitive data.
+
+    
+    """)
+
 def main():
     """
     Main application entry point.
@@ -317,21 +368,24 @@ def main():
     st.markdown("### Compare and vote for the best AI responses from gpt-4o, claude-3.5-sonnet, and deepseek-v3")
 
     # Create tabs for navigation
-    chat_tab, analytics_tab = st.tabs(["💬 Chat", "📊 Analytics"])
+    chat_tab, analytics_tab, faq_tab = st.tabs(["💬 Chat", "📊 Analytics", "❓ FAQ"])
 
     with chat_tab:
         show_chat_tab()
 
     with analytics_tab:
         show_analytics_tab()
+        
+    with faq_tab:
+        show_faq_tab()
 
     # Add sidebar with leaderboard
     with st.sidebar:
         
         st.markdown("### Virgilio Madrid - Data Scientist")
-        st.markdown("#### virgiliomadrid1994@gmail.com")
-        st.markdown("#### https://www.linkedin.com/in/vamadrid/")
-        st.markdown("#### https://portfolio-vam.vercel.app/")
+        st.link_button("Portfolio 🌐", "https://portfolio-vam.vercel.app/")
+        st.link_button("LinkedIn 💼", "https://www.linkedin.com/in/vamadrid/")
+        st.link_button("E-Mail 📧", "mailto:virgiliomadrid1994@gmail.com")
         st.subheader("🏆 Current Rankings")
         standings = get_leaderboard()
         if standings:
